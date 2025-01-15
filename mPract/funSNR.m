@@ -1,9 +1,13 @@
-function [pex1fsX, px1fs0, snrx1fsXdb] = funSNR(x1fs0,x1fsX,Fm,FmSub)
+function [pex1fsX, px1fs0, snrx1fsXdb, ex1fsX] = funSNR(x1fs0,x1fsX,Fm,FmSub)
 
-ex1fsX=SenalError(x1fs0,x1fsX,Fm,FmSub); 
+ex1fsX=x1fs0-x1fsX 
 
 pex1fsX=funPoMe(ex1fsX);
 fprintf('La potencia promedio de la señal residual es = %s miliWatts\n',pex1fsX)
+fprintf('\n')
+
+px1fsX=funPoMe(x1fsX);
+fprintf('La potencia promedio de la señal cuantizada es = %.8f miliWatts\n',px1fsX)
 fprintf('\n')
 
 px1fs0=funPoMe(x1fs0); 
